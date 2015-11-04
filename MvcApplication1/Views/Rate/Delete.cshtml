@@ -1,0 +1,27 @@
+﻿@model Common.Rate
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Видалити кількість поїздок</h2>
+
+<h3>Ви впевнені, що хочете видалити цю кількість?</h3>
+<fieldset>
+    <legend>Значення</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Назад до списку", "Index")
+    </p>
+}

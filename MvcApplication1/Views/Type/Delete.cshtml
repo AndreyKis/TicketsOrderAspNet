@@ -1,0 +1,27 @@
+﻿@model Common.TransportType
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Видалення транспорту з БД</h2>
+
+<h3>Ви впевнені, що хочете видалити цей транспорт</h3>
+<fieldset>
+    <legend>Тип транспорту</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Назад до списку", "Index")
+    </p>
+}

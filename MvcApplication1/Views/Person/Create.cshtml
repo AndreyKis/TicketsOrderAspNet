@@ -1,0 +1,62 @@
+﻿@model Common.Person
+
+@{
+    ViewBag.Title = "Додати нового студента до БД";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    bool canAdd = ViewBag.canAdd;
+}
+
+@if (canAdd)
+{
+    @:<h2>Введіть ім'я та прізвище людини в перше поле та дати початку навчання та закінчення в наступні поля</h2>
+}
+
+else
+{
+    @:<h2>Вибачте, але людина з таким іменем вже існує</h2>
+}
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Person</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.date_begin_ed)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.date_begin_ed)
+            @Html.ValidationMessageFor(model => model.date_begin_ed)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.date_end_ed)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.date_end_ed)
+            @Html.ValidationMessageFor(model => model.date_end_ed)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Назад до списку", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

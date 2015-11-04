@@ -1,0 +1,35 @@
+﻿@model Common.Price
+
+@{
+    ViewBag.Title = "Видалення ціни";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    bool canDelete = ViewBag.canDelete;
+}
+
+<h2>Введіть ціну на видалення</h2>
+
+@if (canDelete)
+{
+    @:<h3>Ви впевнені, що хочете видалити цю ціну?</h3>
+}
+else
+{
+    @:<h3>Такої ціни не існує, або з неї сформований квиток</h3>
+}
+<fieldset>
+    <legend>Ціна</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Value)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Value)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Назад до списку", "Index")
+    </p>
+}

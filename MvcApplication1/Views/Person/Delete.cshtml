@@ -1,0 +1,41 @@
+﻿@model Common.Person
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Видалення студента з БД</h2>
+
+<h3>Ви впевнені, що хочете видалити цього студента?</h3>
+<fieldset>
+    <legend>Студент</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.date_begin_ed)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.date_begin_ed)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.date_end_ed)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.date_end_ed)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Назад до списку", "Index")
+    </p>
+}

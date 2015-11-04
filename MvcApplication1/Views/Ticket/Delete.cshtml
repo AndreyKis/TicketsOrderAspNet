@@ -1,0 +1,48 @@
+﻿@model Common.Ticket
+
+@{
+    ViewBag.Title = "Видалити";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Видалення квитка з БД</h2>
+
+<h3>Ви впевнені, що хочете видалити цей квиток?</h3>
+<fieldset>
+    <legend>Квиток</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Price)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Price)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Rate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Rate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Type)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Type)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Назад до списку", "Index")
+    </p>
+}
